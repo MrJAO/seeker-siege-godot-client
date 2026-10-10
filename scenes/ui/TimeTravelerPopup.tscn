@@ -1,0 +1,373 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/TimeTravelerPopup.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/icons/energy_icon.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/icons/scraps_icon.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/icons/oil_icon.png" id="4"]
+[ext_resource type="StyleBox" path="res://assets/ui/popup_cyan_panel_style.tres" id="5"]
+[ext_resource type="Texture2D" path="res://assets/decoratives/bg_images/border.png" id="6"]
+
+[node name="TimeTravelerPopup" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 300)
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5")
+script = ExtResource("1")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 220
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 220
+theme_override_constants/margin_bottom = 50
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TopRow" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/VBox/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Time Traveler Exchange"
+theme_override_font_sizes/font_size = 30
+
+[node name="CloseButton" type="Button" parent="Margin/VBox/TopRow"]
+z_index = 2
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+theme_override_font_sizes/font_size = 20
+text = "X"
+
+[node name="TabRow" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SkrTabButton" type="Button" parent="Margin/VBox/TabRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 56)
+theme_override_font_sizes/font_size = 18
+toggle_mode = true
+text = "SKR Exchange Rates"
+
+[node name="RexTabButton" type="Button" parent="Margin/VBox/TabRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 56)
+theme_override_font_sizes/font_size = 18
+toggle_mode = true
+text = "Resources Exchange Rates"
+
+[node name="Scroll" type="ScrollContainer" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Content" type="VBoxContainer" parent="Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="SkrSection" type="VBoxContainer" parent="Margin/VBox/Scroll/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SkrTitle" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection"]
+layout_mode = 2
+text = "SKR Exchange Rates"
+theme_override_font_sizes/font_size = 24
+
+[node name="GlobalCapLabel" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection"]
+layout_mode = 2
+text = "Global Daily Cap: 1,000/1,000"
+theme_override_font_sizes/font_size = 16
+
+[node name="SkrSubtitle" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection"]
+layout_mode = 2
+text = "1 SKR = All the required amount of resources below"
+theme_override_font_sizes/font_size = 16
+
+[node name="SkrRow" type="HBoxContainer" parent="Margin/VBox/Scroll/Content/SkrSection"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="EnergyBox" type="PanelContainer" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/EnergyBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/EnergyBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Energy"
+theme_override_font_sizes/font_size = 20
+
+[node name="ImagePlaceholder" type="TextureRect" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/EnergyBox/VBox"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FractionLabel" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/EnergyBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text = "0/100"
+
+[node name="ScrapsBox" type="PanelContainer" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/ScrapsBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/ScrapsBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Scraps"
+theme_override_font_sizes/font_size = 20
+
+[node name="ImagePlaceholder" type="TextureRect" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/ScrapsBox/VBox"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FractionLabel" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/ScrapsBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text = "0/100"
+
+[node name="OilBox" type="PanelContainer" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/OilBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/OilBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Oil"
+theme_override_font_sizes/font_size = 20
+
+[node name="ImagePlaceholder" type="TextureRect" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/OilBox/VBox"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FractionLabel" type="Label" parent="Margin/VBox/Scroll/Content/SkrSection/SkrRow/OilBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text = "0/100"
+
+[node name="SkrButtonSpacer" type="Control" parent="Margin/VBox/Scroll/Content/SkrSection"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="SkrExchangeButton" type="Button" parent="Margin/VBox/Scroll/Content/SkrSection"]
+custom_minimum_size = Vector2(240, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Exchange"
+
+[node name="RexSection" type="VBoxContainer" parent="Margin/VBox/Scroll/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RexTitle" type="Label" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+text = "Resources Exchange Rates"
+theme_override_font_sizes/font_size = 24
+
+[node name="RexSubtitle" type="Label" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+text = "1:1 Ratio"
+theme_override_font_sizes/font_size = 16
+
+[node name="RexRow" type="HBoxContainer" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="EnergyBox" type="PanelContainer" parent="Margin/VBox/Scroll/Content/RexSection/RexRow"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/EnergyBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/EnergyBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Energy"
+theme_override_font_sizes/font_size = 20
+
+[node name="ImagePlaceholder" type="TextureRect" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/EnergyBox/VBox"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FractionLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/EnergyBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text = "1000/1000"
+
+[node name="ScrapsBox" type="PanelContainer" parent="Margin/VBox/Scroll/Content/RexSection/RexRow"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/ScrapsBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/ScrapsBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Scraps"
+theme_override_font_sizes/font_size = 20
+
+[node name="ImagePlaceholder" type="TextureRect" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/ScrapsBox/VBox"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FractionLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/ScrapsBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text = "1000/1000"
+
+[node name="OilBox" type="PanelContainer" parent="Margin/VBox/Scroll/Content/RexSection/RexRow"]
+custom_minimum_size = Vector2(300, 230)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/OilBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/OilBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Oil"
+theme_override_font_sizes/font_size = 20
+
+[node name="ImagePlaceholder" type="TextureRect" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/OilBox/VBox"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FractionLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection/RexRow/OilBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text = "1000/1000"
+
+[node name="MyResourcesLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+text = "My Resources"
+theme_override_font_sizes/font_size = 20
+
+[node name="MyResourcesRow" type="HBoxContainer" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="MyResourceDropdown" type="OptionButton" parent="Margin/VBox/Scroll/Content/RexSection/MyResourcesRow"]
+custom_minimum_size = Vector2(220, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="BalanceLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection/MyResourcesRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "You have: 0"
+
+[node name="AmountInput" type="LineEdit" parent="Margin/VBox/Scroll/Content/RexSection"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+placeholder_text = "Amount to exchange"
+
+[node name="ExchangeToLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+text = "Exchange To"
+theme_override_font_sizes/font_size = 20
+
+[node name="ExchangeToRow" type="HBoxContainer" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="ExchangeToDropdown" type="OptionButton" parent="Margin/VBox/Scroll/Content/RexSection/ExchangeToRow"]
+custom_minimum_size = Vector2(220, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="ReceiveLabel" type="Label" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+text = "You will receive: 0"
+theme_override_font_sizes/font_size = 20
+
+[node name="ConfirmExchangeButton" type="Button" parent="Margin/VBox/Scroll/Content/RexSection"]
+custom_minimum_size = Vector2(260, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Confirm Exchange"
+
+[node name="ConfirmRow" type="HBoxContainer" parent="Margin/VBox/Scroll/Content/RexSection"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="ConfirmButton" type="Button" parent="Margin/VBox/Scroll/Content/RexSection/ConfirmRow"]
+custom_minimum_size = Vector2(200, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Confirm"
+
+[node name="CancelButton" type="Button" parent="Margin/VBox/Scroll/Content/RexSection/ConfirmRow"]
+custom_minimum_size = Vector2(200, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Cancel"
+
+[node name="BorderFrame" type="TextureRect" parent="."]
+z_index = 1
+mouse_filter = 2
+texture = ExtResource("6")
+expand_mode = 1
+stretch_mode = 0

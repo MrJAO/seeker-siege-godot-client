@@ -1,0 +1,172 @@
+[gd_scene load_steps=21 format=3 uid="uid://b80ohk3tsobih"]
+
+[ext_resource type="Script" uid="uid://cp8eb0che7ywd" path="res://scripts/npc/TimeTraveler.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b647eofp7uq57" path="res://assets/npc/TimeTraveler.png" id="2_dujnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwdup"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjvtg"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahnjn"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j36sm"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpyv2"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrnwl"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ika6v"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsnwn"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adflm"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixxhv"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnbnt"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7ahu"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84w8h"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at0ke"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5fy6"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_givix"]
+atlas = ExtResource("2_dujnm")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ukkts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwdup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjvtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahnjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j36sm")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpyv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrnwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ika6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsnwn")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adflm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixxhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnbnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7ahu")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84w8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_at0ke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5fy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_givix")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 20.0
+
+[node name="TimeTraveler" type="Node2D" groups=["time_traveler"]]
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ukkts")
+animation = &"walk_up"
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("CircleShape2D_1")
+
+[node name="NameLabel" type="Label" parent="."]
+z_index = 20
+
+[node name="DialogueBubble" type="PanelContainer" parent="."]
+visible = false
+z_index = 20
+custom_minimum_size = Vector2(140, 0)
+offset_left = -70.0
+offset_top = -80.0
+offset_right = -70.0
+offset_bottom = -80.0
+
+[node name="Label" type="Label" parent="DialogueBubble"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,58 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Seeker Siege"
+run/main_scene="uid://b8k2n3xqjkl01"
+config/features=PackedStringArray("4.4", "Mobile")
+
+[autoload]
+
+GameManager="*res://scripts/autoloads/GameManager.gd"
+ResourceManager="*res://scripts/autoloads/ResourceManager.gd"
+TowerManager="*res://scripts/autoloads/TowerManager.gd"
+SkillTreeManager="*res://scripts/autoloads/SkillTreeManager.gd"
+MapManager="*res://scripts/autoloads/MapManager.gd"
+ReactorManager="*res://scripts/autoloads/ReactorManager.gd"
+SKRManager="*res://scripts/autoloads/SKRManager.gd"
+SaveManager="*res://scripts/autoloads/SaveManager.gd"
+GridManager="*res://scripts/autoloads/GridManager.gd"
+BuildManager="*res://scripts/autoloads/BuildManager.gd"
+InputManager="*res://scripts/autoloads/InputManager.gd"
+NetworkManager="*res://scripts/network/NetworkManager.gd"
+ServerState="*res://scripts/network/ServerState.gd"
+WalletManager="*res://scripts/autoloads/WalletManager.gd"
+UIScaleManager="*res://scripts/autoloads/UIScaleManager.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/WalletAdapterAndroid/plugin.cfg")
+
+[gui]
+
+theme/custom="res://assets/ui/neo_brutalism_theme.tres"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

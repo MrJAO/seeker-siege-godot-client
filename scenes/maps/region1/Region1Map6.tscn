@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dux5752d66ntp"]
+
+[ext_resource type="PackedScene" uid="uid://dl5nqyw2anqi7" path="res://scenes/maps/region1/Region1Map5.tscn" id="1_fl14j"]
+
+[node name="Main" instance=ExtResource("1_fl14j")]
+map = 6
+
+[node name="ProfilePopup" parent="UILayer" index="18"]
+visible = false

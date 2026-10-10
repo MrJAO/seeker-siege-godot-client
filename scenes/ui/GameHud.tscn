@@ -1,0 +1,291 @@
+[gd_scene load_steps=12 format=3 uid="uid://q7r8s9gamehud"]
+
+[ext_resource type="Script" path="res://scripts/ui/GameHud.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/icons/energy_icon.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/icons/scraps_icon.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/icons/oil_icon.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/icons/skr_icon.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/icons/home_icon.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/icons/inventory_icon.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/icons/shop_icon.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/icons/marketplace_icon.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/icons/setting_icon.png" id="10"]
+[ext_resource type="Texture2D" path="res://assets/icons/profile_icon.png" id="11"]
+
+[node name="GameHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="TopCenterGroup" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_top = 8.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="TopBarColumn" type="VBoxContainer" parent="TopCenterGroup"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 4
+
+[node name="TopBar" type="HBoxContainer" parent="TopCenterGroup/TopBarColumn"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="RegionMapButton" type="Button" parent="TopCenterGroup/TopBarColumn/TopBar"]
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Region 1 - Map 1"
+
+[node name="StartButton" type="Button" parent="TopCenterGroup/TopBarColumn/TopBar"]
+custom_minimum_size = Vector2(130, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="NextMapButton" type="Button" parent="TopCenterGroup/TopBarColumn/TopBar"]
+custom_minimum_size = Vector2(130, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Next Map"
+
+[node name="SpawnCountdownLabel" type="Label" parent="TopCenterGroup/TopBarColumn"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = ""
+
+[node name="ResourceBarSpacer" type="Control" parent="TopCenterGroup"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="ResourceBar" type="HBoxContainer" parent="TopCenterGroup"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EnergyBox" type="PanelContainer" parent="TopCenterGroup/ResourceBar"]
+layout_mode = 2
+
+[node name="EnergyMargin" type="MarginContainer" parent="TopCenterGroup/ResourceBar/EnergyBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="EnergyRow" type="HBoxContainer" parent="TopCenterGroup/ResourceBar/EnergyBox/EnergyMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="EnergyIcon" type="TextureRect" parent="TopCenterGroup/ResourceBar/EnergyBox/EnergyMargin/EnergyRow"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyLabel" type="Label" parent="TopCenterGroup/ResourceBar/EnergyBox/EnergyMargin/EnergyRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="ScrapsBox" type="PanelContainer" parent="TopCenterGroup/ResourceBar"]
+layout_mode = 2
+
+[node name="ScrapsMargin" type="MarginContainer" parent="TopCenterGroup/ResourceBar/ScrapsBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="ScrapsRow" type="HBoxContainer" parent="TopCenterGroup/ResourceBar/ScrapsBox/ScrapsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ScrapsIcon" type="TextureRect" parent="TopCenterGroup/ResourceBar/ScrapsBox/ScrapsMargin/ScrapsRow"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrapsLabel" type="Label" parent="TopCenterGroup/ResourceBar/ScrapsBox/ScrapsMargin/ScrapsRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="OilBox" type="PanelContainer" parent="TopCenterGroup/ResourceBar"]
+layout_mode = 2
+
+[node name="OilMargin" type="MarginContainer" parent="TopCenterGroup/ResourceBar/OilBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="OilRow" type="HBoxContainer" parent="TopCenterGroup/ResourceBar/OilBox/OilMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="OilIcon" type="TextureRect" parent="TopCenterGroup/ResourceBar/OilBox/OilMargin/OilRow"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OilLabel" type="Label" parent="TopCenterGroup/ResourceBar/OilBox/OilMargin/OilRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="SkrBox" type="PanelContainer" parent="TopCenterGroup/ResourceBar"]
+layout_mode = 2
+
+[node name="SkrMargin" type="MarginContainer" parent="TopCenterGroup/ResourceBar/SkrBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="SkrRow" type="HBoxContainer" parent="TopCenterGroup/ResourceBar/SkrBox/SkrMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SkrIcon" type="TextureRect" parent="TopCenterGroup/ResourceBar/SkrBox/SkrMargin/SkrRow"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkrLabel" type="Label" parent="TopCenterGroup/ResourceBar/SkrBox/SkrMargin/SkrRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="RightPanel" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 800.0
+grow_horizontal = 0
+theme_override_constants/separation = 10
+
+[node name="HomeButton" type="Button" parent="RightPanel"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = ""
+icon = ExtResource("6")
+expand_icon = true
+disabled = true
+
+[node name="InventoryButton" type="Button" parent="RightPanel"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = ""
+icon = ExtResource("7")
+expand_icon = true
+
+[node name="ShopButton" type="Button" parent="RightPanel"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = ""
+icon = ExtResource("8")
+expand_icon = true
+
+[node name="MarketplaceButton" type="Button" parent="RightPanel"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = ""
+icon = ExtResource("9")
+expand_icon = true
+
+[node name="ProfileButton" type="Button" parent="RightPanel"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = ""
+icon = ExtResource("11")
+expand_icon = true
+
+[node name="SettingsButton" type="Button" parent="RightPanel"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+text = ""
+icon = ExtResource("10")
+expand_icon = true
+
+[node name="LeftPanel" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 268.0
+offset_bottom = 390.0
+theme_override_constants/separation = 10
+
+[node name="ShowPlacementButton" type="Button" parent="LeftPanel"]
+custom_minimum_size = Vector2(260, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Show Placement: OFF"
+
+[node name="ShowRangeButton" type="Button" parent="LeftPanel"]
+custom_minimum_size = Vector2(260, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Show Range: OFF"
+
+[node name="ShowSpawnAreaButton" type="Button" parent="LeftPanel"]
+custom_minimum_size = Vector2(260, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Show Spawn Area: OFF"
+
+[node name="SkillTreeButton" type="Button" parent="LeftPanel"]
+custom_minimum_size = Vector2(260, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Skill Tree"
+
+[node name="KillProgressBox" type="PanelContainer" parent="LeftPanel"]
+layout_mode = 2
+
+[node name="KillProgressMargin" type="MarginContainer" parent="LeftPanel/KillProgressBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="KillProgressVBox" type="VBoxContainer" parent="LeftPanel/KillProgressBox/KillProgressMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="KillProgressLabel" type="Label" parent="LeftPanel/KillProgressBox/KillProgressMargin/KillProgressVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Unlock Region 1 - Map 2"
+
+[node name="KillProgressBar" type="ProgressBar" parent="LeftPanel/KillProgressBox/KillProgressMargin/KillProgressVBox"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+min_value = 0
+max_value = 100
+value = 0

@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxqkf5wdx50su"]
+
+[ext_resource type="Script" uid="uid://bv4q7twyyrr0x" path="res://scripts/npc/Engineer.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bl6xckfyljh6" path="res://assets/npc/Engineer.png" id="2_ds5k5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wok18"]
+atlas = ExtResource("2_ds5k5")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8fak"]
+atlas = ExtResource("2_ds5k5")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4anu"]
+atlas = ExtResource("2_ds5k5")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o51m"]
+atlas = ExtResource("2_ds5k5")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnqet"]
+atlas = ExtResource("2_ds5k5")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prhv0"]
+atlas = ExtResource("2_ds5k5")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b03mh"]
+atlas = ExtResource("2_ds5k5")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr222"]
+atlas = ExtResource("2_ds5k5")
+region = Rect2(240, 80, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ungme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wok18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8fak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4anu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o51m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnqet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prhv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b03mh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr222")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 29.4543
+
+[node name="Engineer" type="Node2D" groups=["engineer"]]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ungme")
+animation = &"idle"
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("CircleShape2D_1")
+
+[node name="NameLabel" type="Label" parent="."]
+z_index = 20
+
+[node name="DialogueBubble" type="PanelContainer" parent="."]
+visible = false
+z_index = 20
+custom_minimum_size = Vector2(160, 0)
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -80.0
+offset_bottom = -80.0
+
+[node name="Label" type="Label" parent="DialogueBubble"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://b3r0d2ioorv4r"]
+
+[ext_resource type="Script" uid="uid://4v7574ksyrub" path="res://scripts/npc/PortalGuard.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://chd3irl76vvuh" path="res://assets/npc/PortalGuard.png" id="2_u7lod"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjlip"]
+atlas = ExtResource("2_u7lod")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq11v"]
+atlas = ExtResource("2_u7lod")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg4v5"]
+atlas = ExtResource("2_u7lod")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y7l1"]
+atlas = ExtResource("2_u7lod")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goiiw"]
+atlas = ExtResource("2_u7lod")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mebqb"]
+atlas = ExtResource("2_u7lod")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfoca"]
+atlas = ExtResource("2_u7lod")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd0lv"]
+atlas = ExtResource("2_u7lod")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6yhia"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjlip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq11v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg4v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y7l1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goiiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mebqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfoca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd0lv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 29.3333
+
+[node name="PortalGuard" type="Node2D" groups=["portal_guard"]]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6yhia")
+animation = &"idle"
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("CircleShape2D_1")
+
+[node name="NameLabel" type="Label" parent="."]
+z_index = 20
+
+[node name="DialogueBubble" type="PanelContainer" parent="."]
+visible = false
+z_index = 20
+custom_minimum_size = Vector2(160, 0)
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -80.0
+offset_bottom = -80.0
+
+[node name="Label" type="Label" parent="DialogueBubble"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://7qp36lfs4gcw"]
+
+[ext_resource type="Script" uid="uid://cqo5y5nijuyg5" path="res://scripts/buildings/DeploymentBuilding.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c4sk2sjre5mx0" path="res://assets/deployment/deployment_level1.png" id="2_0t4lk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(194, 151)
+
+[node name="DeploymentBuilding" type="Node2D" groups=["deployment_building"]]
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0t4lk")
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_1")

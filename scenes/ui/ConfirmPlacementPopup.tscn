@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://k1l2m3confirmpop"]
+
+[ext_resource type="Script" path="res://scripts/ui/ConfirmPlacementPopup.gd" id="1"]
+
+[node name="ConfirmPlacementPopup" type="Control"]
+custom_minimum_size = Vector2(370, 90)
+script = ExtResource("1")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+theme_override_constants/separation = 10
+layout_mode = 0
+offset_right = 370.0
+offset_bottom = 90.0
+
+[node name="ConfirmButton" type="Button" parent="HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 90)
+theme_override_font_sizes/font_size = 28
+text = "Confirm"
+
+[node name="CancelButton" type="Button" parent="HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 90)
+theme_override_font_sizes/font_size = 28
+text = "Cancel"
+
+[connection signal="pressed" from="HBox/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="HBox/CancelButton" to="." method="_on_cancel_button_pressed"]

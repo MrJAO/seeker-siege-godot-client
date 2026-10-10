@@ -1,0 +1,192 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/ResourceAssignPopup.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/icons/energy_icon.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/icons/scraps_icon.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/icons/oil_icon.png" id="4"]
+[ext_resource type="StyleBox" path="res://assets/ui/popup_cyan_panel_style.tres" id="5"]
+[ext_resource type="Texture2D" path="res://assets/decoratives/bg_images/border.png" id="6"]
+
+[node name="ResourceAssignPopup" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+script = ExtResource("1")
+
+[node name="DimBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+color = Color(0, 0, 0, 0.6)
+
+[node name="PopupPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(900, 580)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -290.0
+offset_right = 450.0
+offset_bottom = 290.0
+theme_override_styles/panel = ExtResource("5")
+
+[node name="Margin" type="MarginContainer" parent="PopupPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 32
+
+[node name="VBox" type="VBoxContainer" parent="PopupPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="PopupPanel/Margin/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Assign Resources Drop Rates"
+theme_override_font_sizes/font_size = 26
+
+[node name="ResourceRow" type="HBoxContainer" parent="PopupPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="EnergyBox" type="PanelContainer" parent="PopupPanel/Margin/VBox/ResourceRow"]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="PopupPanel/Margin/VBox/ResourceRow/EnergyBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/EnergyBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Energy"
+theme_override_font_sizes/font_size = 18
+
+[node name="ImagePlaceholder" type="TextureRect" parent="PopupPanel/Margin/VBox/ResourceRow/EnergyBox/VBox"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RoleLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/EnergyBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = ""
+theme_override_font_sizes/font_size = 16
+
+[node name="InfoLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/EnergyBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+text = ""
+theme_override_font_sizes/font_size = 13
+
+[node name="ScrapsBox" type="PanelContainer" parent="PopupPanel/Margin/VBox/ResourceRow"]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="PopupPanel/Margin/VBox/ResourceRow/ScrapsBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/ScrapsBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Scraps"
+theme_override_font_sizes/font_size = 18
+
+[node name="ImagePlaceholder" type="TextureRect" parent="PopupPanel/Margin/VBox/ResourceRow/ScrapsBox/VBox"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RoleLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/ScrapsBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = ""
+theme_override_font_sizes/font_size = 16
+
+[node name="InfoLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/ScrapsBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+text = ""
+theme_override_font_sizes/font_size = 13
+
+[node name="OilBox" type="PanelContainer" parent="PopupPanel/Margin/VBox/ResourceRow"]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="PopupPanel/Margin/VBox/ResourceRow/OilBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NameLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/OilBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Oil"
+theme_override_font_sizes/font_size = 18
+
+[node name="ImagePlaceholder" type="TextureRect" parent="PopupPanel/Margin/VBox/ResourceRow/OilBox/VBox"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RoleLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/OilBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = ""
+theme_override_font_sizes/font_size = 16
+
+[node name="InfoLabel" type="Label" parent="PopupPanel/Margin/VBox/ResourceRow/OilBox/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+text = ""
+theme_override_font_sizes/font_size = 13
+
+[node name="NoteLabel" type="Label" parent="PopupPanel/Margin/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Note: Assign your resources drop rates carefully. You can't changed it afterwards"
+theme_override_font_sizes/font_size = 13
+
+[node name="ButtonRow" type="HBoxContainer" parent="PopupPanel/Margin/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="ConfirmButton" type="Button" parent="PopupPanel/Margin/VBox/ButtonRow"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+text = "Confirm"
+
+[node name="ResetButton" type="Button" parent="PopupPanel/Margin/VBox/ButtonRow"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+text = "Reset"
+
+[node name="BorderFrame" type="TextureRect" parent="PopupPanel"]
+z_index = 1
+mouse_filter = 2
+texture = ExtResource("6")
+expand_mode = 1
+stretch_mode = 0

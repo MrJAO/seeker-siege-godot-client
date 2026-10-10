@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://efdv6uivwo"]
+
+[ext_resource type="Script" uid="uid://b5ffgeot204j4" path="res://scripts/mobs/base_mob.gd" id="1_lyppj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lyppj"]
+radius = 16.0
+
+[node name="BaseMob" type="CharacterBody2D"]
+scale = Vector2(0.75, 0.75)
+collision_mask = 0
+script = ExtResource("1_lyppj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lyppj")

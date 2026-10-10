@@ -1,0 +1,151 @@
+[gd_scene load_steps=21 format=3 uid="uid://b64res0bft6km"]
+
+[ext_resource type="PackedScene" uid="uid://efdv6uivwo" path="res://scenes/mobs/base_mob.tscn" id="1"]
+[ext_resource type="Script" uid="uid://bi1g7its1mdbi" path="res://scripts/mobs/storm_leviathan_boss.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cg40q5xghwxoa" path="res://assets/mobs/tempest_seas_mobs/storm_leviathan_boss.png" id="3_7fnds"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qfqr"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvrit"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cijip"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa53e"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1p2w"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kilk1"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de6o4"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qha5r"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqi4k"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_111su"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdoq4"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhei3"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31su8"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j5db"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xc7l"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_308qc"]
+atlas = ExtResource("3_7fnds")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3fdhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qfqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvrit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cijip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa53e")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1p2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kilk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de6o4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qha5r")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqi4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_111su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdoq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhei3")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31su8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j5db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xc7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_308qc")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 8.0
+}]
+
+[node name="BaseMob" instance=ExtResource("1")]
+script = ExtResource("2")
+wander_min_x = 70.0
+wander_max_x = 1850.0
+wander_min_y = 70.0
+wander_max_y = 1040.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_3fdhi")
+animation = &"walk_up"

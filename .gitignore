@@ -1,0 +1,11 @@
+.godot/
+/android/
+bin/~*
+*.apk
+*.aab
+*.keystore
+*.jks
+*.tmp
+.DS_Store
+Thumbs.db
+*.bak

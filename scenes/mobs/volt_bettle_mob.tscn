@@ -1,0 +1,147 @@
+[gd_scene load_steps=21 format=3 uid="uid://bbhs8k7jcmj5"]
+
+[ext_resource type="PackedScene" uid="uid://efdv6uivwo" path="res://scenes/mobs/base_mob.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dowks7x5wtxhi" path="res://scripts/mobs/volt_bettle_mob.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://0aj58nw81bbg" path="res://assets/mobs/neon_wasteland_mobs/volt_bettle_mob.png" id="3_rvcvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yos7"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_528ho"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0ib4"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwktn"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48iro"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7618i"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lpvp"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i14lu"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xajpd"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qh4h"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugq3f"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i36we"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akty0"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj044"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10hwu"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l7gy"]
+atlas = ExtResource("3_rvcvd")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5h3rb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yos7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_528ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0ib4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwktn")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48iro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7618i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lpvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i14lu")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xajpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qh4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugq3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i36we")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akty0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj044")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10hwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l7gy")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 8.0
+}]
+
+[node name="BaseMob" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_5h3rb")
+animation = &"walk_up"

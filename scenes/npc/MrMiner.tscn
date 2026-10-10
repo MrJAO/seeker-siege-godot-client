@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://cjo5tldaxbxvl"]
+
+[ext_resource type="Script" uid="uid://xaxhi466r1sh" path="res://scripts/npc/MrMiner.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cg44pbd1lsqr" path="res://assets/npc/MrMiner.png" id="2_upjan"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqyp5"]
+atlas = ExtResource("2_upjan")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18wn3"]
+atlas = ExtResource("2_upjan")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4epfm"]
+atlas = ExtResource("2_upjan")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vtkw"]
+atlas = ExtResource("2_upjan")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6deek"]
+atlas = ExtResource("2_upjan")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ateox"]
+atlas = ExtResource("2_upjan")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7rof"]
+atlas = ExtResource("2_upjan")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x34fk"]
+atlas = ExtResource("2_upjan")
+region = Rect2(240, 80, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dm0hn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqyp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18wn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4epfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vtkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6deek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ateox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7rof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x34fk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 32.1109
+
+[node name="MrMiner" type="Node2D" groups=["mr_miner"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dm0hn")
+animation = &"idle"
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="ClickShape" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("CircleShape2D_1")
+
+[node name="NameLabel" type="Label" parent="."]
+z_index = 20
+
+[node name="DialogueBubble" type="PanelContainer" parent="."]
+visible = false
+z_index = 20
+custom_minimum_size = Vector2(160, 0)
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -80.0
+offset_bottom = -80.0
+
+[node name="Label" type="Label" parent="DialogueBubble"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bco8wllow7aim"]
+
+[ext_resource type="PackedScene" uid="uid://cg4x4b1v7kyxu" path="res://scenes/maps/region1/Region1Map2.tscn" id="1_h683x"]
+
+[node name="Main" instance=ExtResource("1_h683x")]
+map = 3

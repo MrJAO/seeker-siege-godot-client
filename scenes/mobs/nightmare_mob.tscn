@@ -1,0 +1,147 @@
+[gd_scene load_steps=21 format=3 uid="uid://rgl0xvnrhdqx"]
+
+[ext_resource type="PackedScene" uid="uid://efdv6uivwo" path="res://scenes/mobs/base_mob.tscn" id="1"]
+[ext_resource type="Script" uid="uid://8lgm3qnj608r" path="res://scripts/mobs/nightmare_mob.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://oawimwrsovyp" path="res://assets/mobs/shadow_dimension_mobs/nightmare_mob.png" id="3_wbgs4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lng6j"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay66a"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g05e"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1kgn"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jagf1"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isn3k"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6cq4"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vus3c"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(144, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frwcg"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kr0y"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb21i"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqnxl"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gcq3"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpgh3"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j0k5"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuuwq"]
+atlas = ExtResource("3_wbgs4")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eikno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lng6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay66a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g05e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1kgn")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jagf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isn3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6cq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vus3c")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frwcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kr0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb21i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqnxl")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gcq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpgh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j0k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuuwq")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 8.0
+}]
+
+[node name="BaseMob" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_eikno")
+animation = &"walk_up"

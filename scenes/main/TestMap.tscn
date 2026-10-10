@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhr8dlap1bb7x"]
+
+[ext_resource type="Script" uid="uid://bytmop8wadp1x" path="res://scripts/ui/TestMap.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://4x44kp1r561a" path="res://scenes/ui/BuildCancelPopup.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://digpnrsnlf0pk" path="res://scenes/ui/TowerSelectPopup.tscn" id="3"]
+[ext_resource type="Script" uid="uid://biutgppb3pxpr" path="res://scripts/ui/DebugGrantPanel.gd" id="4"]
+
+[node name="TestMap" type="Node2D"]
+script = ExtResource("1")
+
+[node name="TileLayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TurretsContainer" type="Node2D" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="BuildCancelPopup" parent="UILayer" instance=ExtResource("2")]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TowerSelectPopup" parent="UILayer" instance=ExtResource("3")]
+
+[node name="DebugGrantPanel" type="VBoxContainer" parent="UILayer"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 200.0
+script = ExtResource("4")
