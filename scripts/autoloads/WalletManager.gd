@@ -204,6 +204,7 @@ func _on_message_signed(signature) -> void:
 func _on_signing_failed() -> void:
 	_sign_failed = true
 
+# Sign SOL transaction
 func sign_and_send_sol_transfer(destinations: Array, rpc_url: String) -> Dictionary:
 	if not wallet_is_connected:
 		return {"ok": false, "error": "not_connected"}
@@ -222,6 +223,99 @@ func sign_and_send_sol_transfer(destinations: Array, rpc_url: String) -> Diction
 	for dest in destinations:
 		var dest_pubkey: Pubkey = Pubkey.new_from_string(String(dest.wallet))
 		tx.add_instruction(SystemProgram.transfer(payer_pubkey, dest_pubkey, int(dest.lamports)))
+	tx.url_override = rpc_url
+
+	_tx_blockhash_ok = false
+	_tx_blockhash_failed = false
+	tx.blockhash_updated.connect(_on_tx_blockhash_updated, CONNECT_ONE_SHOT)
+	tx.blockhash_update_failed.connect(_on_tx_blockhash_failed_handler, CONNECT_ONE_SHOT)
+	tx.update_latest_blockhash()
+
+	var elapsed: float = 0.0
+	while not _tx_blockhash_ok and not _tx_blockhash_failed and elapsed < CONNECT_TIMEOUT_SECONDS:
+		await get_tree().create_timer(POLL_INTERVAL_SECONDS).timeout
+		elapsed += POLL_INTERVAL_SECONDS
+
+	if not _tx_blockhash_ok:
+		tx.queue_free()
+		_finish_transaction_op()
+		return {"ok": false, "error": "blockhash_failed"}
+
+	var tx_bytes: PackedByteArray = tx.serialize()
+
+	plugin.call("signTransaction", tx_bytes)
+
+	elapsed = 0.0
+	var status: int = 0
+	while status == 0 and elapsed < CONNECT_TIMEOUT_SECONDS:
+		await get_tree().create_timer(POLL_INTERVAL_SECONDS).timeout
+		elapsed += POLL_INTERVAL_SECONDS
+		status = plugin.call("getSigningStatus")
+
+	if status != 1:
+		tx.queue_free()
+		_finish_transaction_op()
+		return {"ok": false, "error": "signing_failed_or_timeout"}
+
+	var raw_response: PackedByteArray = plugin.call("getMessageSignature")
+	plugin.call("clearStateFullReset")
+	tx.queue_free()
+
+	if raw_response.size() < 65:
+		_finish_transaction_op()
+		return {"ok": false, "error": "signed_response_too_small"}
+
+	var signed_tx = Transaction.new_from_bytes(raw_response)
+	add_child(signed_tx)
+	signed_tx.url_override = rpc_url
+
+	_tx_send_done = false
+	_tx_send_result = null
+	signed_tx.transaction_response_received.connect(_on_tx_send_response, CONNECT_ONE_SHOT)
+	signed_tx.send()
+
+	elapsed = 0.0
+	while not _tx_send_done and elapsed < CONNECT_TIMEOUT_SECONDS:
+		await get_tree().create_timer(POLL_INTERVAL_SECONDS).timeout
+		elapsed += POLL_INTERVAL_SECONDS
+
+	signed_tx.queue_free()
+	_finish_transaction_op()
+
+	if typeof(_tx_send_result) == TYPE_DICTIONARY and _tx_send_result.has("result"):
+		return {"ok": true, "signature": String(_tx_send_result.result)}
+
+	return {"ok": false, "error": "broadcast_failed_or_timeout", "raw": _tx_send_result}
+
+# Sign SKR transaction
+func sign_and_send_skr_transfer(prepare_data: Dictionary, rpc_url: String) -> Dictionary:
+	if not wallet_is_connected:
+		return {"ok": false, "error": "not_connected"}
+	if not Engine.has_singleton("WalletAdapterAndroid"):
+		return {"ok": false, "error": "no_android_plugin"}
+	var plugin = Engine.get_singleton("WalletAdapterAndroid")
+
+	_current_operation = "transaction"
+	if OS.get_name() == "Android":
+		DisplayServer.screen_set_orientation(DisplayServer.SCREEN_SENSOR)
+
+	var payer_pubkey: Pubkey = _adapter.get_connected_key()
+	var mint_pubkey: Pubkey = Pubkey.new_from_string(String(prepare_data.mintAddress))
+	var source_ata: Pubkey = Pubkey.new_from_string(String(prepare_data.buyerAta))
+	var decimals: int = int(prepare_data.decimals)
+
+	var tx := Transaction.new()
+	add_child(tx)
+	tx.set_payer(_adapter)
+
+	var seller_ata: Pubkey = Pubkey.new_from_string(String(prepare_data.sellerAta))
+	var seller_amount: int = int(prepare_data.sellerAmountBaseUnits)
+	tx.add_instruction(TokenProgram.transfer_checked(source_ata, mint_pubkey, seller_ata, payer_pubkey, seller_amount, decimals))
+
+	var treasury_ata: Pubkey = Pubkey.new_from_string(String(prepare_data.treasuryAta))
+	var treasury_amount: int = int(prepare_data.treasuryAmountBaseUnits)
+	tx.add_instruction(TokenProgram.transfer_checked(source_ata, mint_pubkey, treasury_ata, payer_pubkey, treasury_amount, decimals))
+
 	tx.url_override = rpc_url
 
 	_tx_blockhash_ok = false
