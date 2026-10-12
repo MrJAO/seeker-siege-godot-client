@@ -74,3 +74,6 @@ Tap <img src="assets/icons/profile_icon.png" width="48" height="48"> → Go to C
 - **Mobile Wallet Adapter only:** the Solana SDK supports other well-known Solana wallets, but this dApp is configured and tested for MWA only.
 - **Devnet only, for now:** `HOLDING_SOURCE` and `SOLANA_RPC_URL` on the backend currently point at Solana devnet.
 - **Game Audio:** Audio has been deprioritized and is not available in the current version.
+- **Ascended Tower Tier 2 icon doesn't refresh live:** the updated sprite only shows after fully closing and reopening the app - the underlying ascension itself is correct, this is a display-only cache issue.
+- **SKR Exchange sometimes stops early:** claiming can stop after around 10 claims, possibly a short rate limit (not the 500 SKR/day cap). Haven't nailed down the exact trigger yet.
+- **Touch can pass through some popups to the map behind them:** on InventoryPopup, ShopPopup, MarketplacePopup, MiningShaftPopup, DeploymentPopup, ArmoryPopup, ProfilePopup, and SettingsPopup, tapping inside the popup can register on a buildable tile underneath it, causing BuildCancelPopup to appear unexpectedly.
